@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        Commands\ExportCheckCardlink::class,
+        Commands\ImportCheckCardlink::class,
     ];
 
     /**
@@ -26,6 +28,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->command('custom:exportcardlink')->everyMinute();
+        $schedule->command('custom:importcardlink')->everyMinute();
     }
 
     /**

@@ -1,0 +1,10 @@
+option batch abort
+option confirm off
+open sftp://recurring:p%40ssw0rd@10.20.6.50
+cd /RECURRING/FromRecurring
+option transfer ascii
+get * C:\Users\GSB\Desktop
+#get example_file.txt C:\Users\GSB\Desktop\ตัวอย่างไฟล์ recurring\import
+#synchronize remote C:\Users\GSB\Desktop\ตัวอย่างไฟล์ recurring\import /RECURRING/FromRecurring
+close
+exit

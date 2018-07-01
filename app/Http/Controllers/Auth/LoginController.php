@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -35,5 +38,28 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function credentials(Request $request)
+    {
+        return ['email'=> $request{ $this->username() }, 'password'=>$request->password, 'useflag'=>'Y'];
+    }
+
+    protected function sendFailedLoginResponse(Request $request) {
+        if ( ! User::where('email', $request->email)->first() ) {
+            return redirect()->back()
+                ->withInput($request->only($this->username(), 'remember'))
+                ->withErrors([
+                    $this->username() => 'อีเมล์ไม่ถูกต้อง',
+                ]);
+        }
+        
+        if ( ! User::where('email', $request->email)->where('password', bcrypt($request->password))->first() ) {
+            return redirect()->back()
+                ->withInput($request->only($this->username(), 'remember'))
+                ->withErrors([
+                    'password' => 'รหัสผ่านไม่ถูกต้อง',
+                ]);
+        }
     }
 }

@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Bangkok',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'th',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,6 +159,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
+        // jQuery DataTables API for Laravel 4|5
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
     ],
 
@@ -208,6 +211,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // jQuery DataTables API for Laravel 4|5
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

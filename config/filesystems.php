@@ -64,6 +64,17 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        // 'sftp' => [
+        //     'driver' => 'sftp',
+        //     'host' => '10.20.6.50',
+        //     'port' => 22,
+        //     'username' => 'recurring',
+        //     'password' => 'p@ssw0rd',
+            // 'privateKey' => 'path/to/or/contents/of/privatekey',
+            // 'root' => '/path/to/root',
+            // 'timeout' => 10,
+        // ],
+
     ],
 
 ];
